@@ -1,0 +1,89 @@
+/* Global CSS Variables and Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+:root {
+  --color-text-primary-light: #212529;
+  --color-text-secondary-light: #6c757d;
+
+  --color-text-primary-dark: #f1f3f5;
+  --color-text-secondary-dark: #adb5bd;
+
+  --shadow-primary: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+}
+
+:root {
+  --color-bg: #f8f9fa;
+  --color-bg-secondary: #e9ecef;
+
+  --color-text-primary: var(--color-text-primary-light);
+  --color-text-secondary: var(--color-text-secondary-light);
+
+  --color-primary: #000000;
+  --color-secondary: var(--color-bg);
+
+  --color-success: #a3e635;
+  --color-error: #ff6b6b;
+
+  --color-border: #ced4da;
+  --color-border-accent: #000000;
+  --color-border-muted: #dee2e6;
+  --color-border-secondary: #adb5bd;
+
+  --color-hover-bg: #f1f3f5;
+  --color-primary-hover: #262626;
+  --color-secondary-hover: #e2e6ea;
+}
+
+[color-scheme='dark'] {
+  --color-bg: #121212;
+  --color-bg-secondary: #1e1e1e;
+
+  --color-text-primary: var(--color-text-primary-dark);
+  --color-text-secondary: var(--color-text-secondary-dark);
+
+  --color-primary: #ffffff;
+  --color-secondary: var(--color-bg);
+
+  --color-success: #c6f68d;
+  --color-error: #ff8787;
+
+  --color-border: #2e2e2e;
+  --color-border-accent: #ffffff;
+  --color-border-muted: #3a3a3a;
+  --color-border-secondary: #495057;
+
+  --color-hover-bg: #1a1a1a;
+  --color-primary-hover: #e0e0e0;
+  --color-secondary-hover: #1c1c1c;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg-secondary);
+  font-family: 'Open Sans', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: 'wdth' 100;
+  color: var(--color-text-primary);
+}
+
+#root {
+  max-width: 1200px;
+  padding: 0 32px;
+  margin: 0 auto;
+  min-height: 100vh;
+}

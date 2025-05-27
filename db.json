@@ -1,0 +1,124 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "description": "Salary",
+      "amount": 5000,
+      "type": "income",
+      "category": "Job",
+      "date": "2024-06-01"
+    },
+    {
+      "id": 2,
+      "description": "Groceries",
+      "amount": -150,
+      "type": "expense",
+      "category": "Food",
+      "date": "2024-06-02"
+    },
+    {
+      "id": 3,
+      "description": "Freelance Project",
+      "amount": 1200,
+      "type": "income",
+      "category": "Freelance",
+      "date": "2024-06-05"
+    },
+    {
+      "id": 4,
+      "description": "Electricity Bill",
+      "amount": -90,
+      "type": "expense",
+      "category": "Utilities",
+      "date": "2024-06-06"
+    },
+    {
+      "id": 5,
+      "description": "Dinner Out",
+      "amount": -60,
+      "type": "expense",
+      "category": "Entertainment",
+      "date": "2024-06-08"
+    },
+    {
+      "id": 6,
+      "description": "Stock Dividends",
+      "amount": 300,
+      "type": "income",
+      "category": "Investments",
+      "date": "2024-06-09"
+    },
+    {
+      "id": 7,
+      "description": "Internet Bill",
+      "amount": -45,
+      "type": "expense",
+      "category": "Utilities",
+      "date": "2024-06-10"
+    },
+    {
+      "id": 8,
+      "description": "Movie Night",
+      "amount": -25,
+      "type": "expense",
+      "category": "Entertainment",
+      "date": "2024-06-12"
+    },
+    {
+      "id": 9,
+      "description": "Sold Old Laptop",
+      "amount": 400,
+      "type": "income",
+      "category": "Other",
+      "date": "2024-06-15"
+    },
+    {
+      "id": 10,
+      "description": "Coffee Shop",
+      "amount": -12,
+      "type": "expense",
+      "category": "Food",
+      "date": "2024-06-16"
+    },
+    {
+      "id": 11,
+      "description": "Gym Membership",
+      "amount": -50,
+      "type": "expense",
+      "category": "Health",
+      "date": "2024-06-17"
+    },
+    {
+      "id": 12,
+      "description": "Car Maintenance",
+      "amount": -200,
+      "type": "expense",
+      "category": "Transport",
+      "date": "2024-06-18"
+    },
+    {
+      "id": 13,
+      "description": "Tutoring Income",
+      "amount": 250,
+      "type": "income",
+      "category": "Freelance",
+      "date": "2024-06-20"
+    },
+    {
+      "id": 14,
+      "description": "Books Purchase",
+      "amount": -80,
+      "type": "expense",
+      "category": "Education",
+      "date": "2024-06-21"
+    },
+    {
+      "id": 15,
+      "description": "Monthly Rent",
+      "amount": -1200,
+      "type": "expense",
+      "category": "Housing",
+      "date": "2024-06-25"
+    }
+  ]
+}

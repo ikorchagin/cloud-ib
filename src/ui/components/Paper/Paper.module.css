@@ -1,0 +1,11 @@
+.paper {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--spacing-lg);
+  padding: var(--spacing-xl);
+  overflow: hidden;
+}
+
+.noPadding {
+  padding: 0;
+}

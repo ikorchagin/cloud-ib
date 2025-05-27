@@ -1,0 +1,40 @@
+.headerContainer {
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 32px;
+  height: 60px;
+}
+
+.headerContent {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  border-radius: var(--spacing-xl);
+  justify-content: space-between;
+  padding: 16px 32px;
+  background-color: rgb(248, 249, 250, 0.6);
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(12px);
+}
+
+[color-scheme='dark'] .headerContent {
+  background-color: rgb(18, 18, 18, 0.6);
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.main {
+  margin: 64px auto 0;
+  max-width: 1000px;
+  min-height: 200vh;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}

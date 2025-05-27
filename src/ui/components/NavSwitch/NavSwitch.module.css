@@ -1,0 +1,34 @@
+.navContainer {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing-xl);
+  min-height: 40px;
+  min-width: 40px;
+}
+
+.navContent {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-xl);
+}
+
+.indicator {
+  background-color: red;
+}
+
+.link {
+  color: var(--color-text-primary);
+  text-decoration: none;
+  padding: var(--spacing-xs) var(--spacing-md);
+
+  &:hover {
+    color: var(--color-text-secondary);
+  }
+}
+
+.selected {
+  background-color: var(--color-primary);
+  color: var(--color-text-secondary);
+
+  border-radius: var(--spacing-md);
+}
