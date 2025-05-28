@@ -1,4 +1,4 @@
-import type { ModalProps } from '@/ui/components/Modal/types.ts'
+import type { ModalProps } from '@/ui/modal/types.ts'
 
 export interface ConfirmationDialogProps extends ModalProps {
   onConfirm: () => void

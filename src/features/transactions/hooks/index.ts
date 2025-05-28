@@ -9,3 +9,4 @@ export const {
 
 export * from './useTransactionMetrics'
 export * from './useTransactionCategories'
+export * from './useCurrentTransaction'

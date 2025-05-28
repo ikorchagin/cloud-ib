@@ -3,18 +3,23 @@ import React from 'react'
 import { IconButton } from '@/ui/components/IconButton'
 
 import { useTable } from '../hooks'
-import type { BaseData } from '../types'
+import type { TableRow } from '@/ui/table/types.ts'
 
-export function TableBody<T extends BaseData>() {
+export function TableBody<T extends Record<string, unknown>>() {
   const {
     table: { columns, data, rowActions, onSelectRow },
   } = useTable<T>()
 
   const renderRowActions = React.useCallback(
-    (row: T) =>
+    (row: TableRow<T>) =>
       rowActions?.map(({ icon, onAction }) => (
         <td key={row.id}>
-          <IconButton onClick={() => onAction(row)}>
+          <IconButton
+            onClick={e => {
+              e.stopPropagation()
+              onAction(row)
+            }}
+          >
             {icon}
           </IconButton>
         </td>
@@ -35,11 +40,7 @@ export function TableBody<T extends BaseData>() {
               </td>
             )
           })}
-          <td
-            style={{ display: 'flex', flexDirection: 'row-reverse' }}
-          >
-            {renderRowActions(row)}
-          </td>
+          {renderRowActions(row)}
         </tr>
       )
     })

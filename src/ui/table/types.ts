@@ -1,31 +1,31 @@
 import React from 'react'
 
-export interface BaseData {
+export type TableRow<T> = {
   id: number
-}
+} & T
 
-export interface TableColumn<T extends BaseData> {
+export interface TableColumn<T> {
   key: string
   title: string
-  renderEl: (value: unknown, row: T) => React.JSX.Element
+  renderEl: (value: unknown, row: TableRow<T>) => React.JSX.Element
 }
 
-export interface TableRowAction<T extends BaseData> {
+export interface TableRowAction<T> {
   icon: React.JSX.Element
-  onAction: (row: T) => void
+  onAction: (row: TableRow<T>) => void
 }
 
-export interface TableProps<T extends BaseData> {
+export interface TableProps<T> {
   columns: TableColumn<T>[]
-  data: T[] | null | undefined
+  data: TableRow<T>[] | null | undefined
   rowActions?: TableRowAction<T>[]
-  onSelectRow?: (row: T) => void
+  onSelectRow?: (row: TableRow<T>) => void
 }
 
-export type TableProviderProps<T extends BaseData> = TableProps<T> &
+export type TableProviderProps<T> = TableProps<T> &
   React.PropsWithChildren
 
-export type TableContextProps<T extends BaseData> = {
+export type TableContextProps<T> = {
   table: TableProps<T>
   setTable: (tableProps: TableProps<T>) => void
 }

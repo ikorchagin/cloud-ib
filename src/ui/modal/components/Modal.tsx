@@ -7,7 +7,7 @@ import { ModalActions } from './ModalActions.tsx'
 import { ModalContent } from './ModalContent.tsx'
 import { ModalTitle } from './ModalTitle.tsx'
 import styles from './Modal.module.css'
-import type { ModalProps } from './types.ts'
+import type { ModalProps } from '../types.ts'
 
 const sizesMap = {
   small: styles.sizeSmall,

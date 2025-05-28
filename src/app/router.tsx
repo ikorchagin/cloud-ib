@@ -1,11 +1,10 @@
 import { createBrowserRouter } from 'react-router'
 
-import { AppLayout } from '@/app/AppLayout'
 import { DashboardPage } from '@/features/dashboard'
-import {
-  TransactionDetailsPage,
-  TransactionsPage,
-} from '@/features/transactions/pages'
+import { TransactionsPage } from '@/features/transactions/pages/TransactionsPage'
+import { TransactionDetailsPage } from '@/features/transactions/pages/TransactionDetailsPage'
+
+import { AppLayout } from './AppLayout'
 
 export const router = createBrowserRouter([
   {

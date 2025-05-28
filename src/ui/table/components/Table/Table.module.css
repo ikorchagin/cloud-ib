@@ -1,7 +1,3 @@
-.tableHeader {
-  padding: var(--spacing-md) var(--spacing-lg);
-}
-
 .table {
   background-color: var(--color-bg);
   overflow: hidden;

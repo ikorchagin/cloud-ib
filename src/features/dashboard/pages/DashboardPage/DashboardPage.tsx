@@ -1,14 +1,14 @@
 import {
-  FaAirbnb,
   FaArrowCircleDown,
   FaArrowCircleUp,
   FaWallet,
 } from 'react-icons/fa'
 
 import { Card } from '@/ui/components/Card/Card.tsx'
+import { formatMoney } from '@/ui/utils'
+import { useTransactionMetrics } from '@/features/transactions/hooks'
 
 import styles from './DashboardPage.module.css'
-import { useTransactionMetrics } from '../transactions/hooks'
 
 export function DashboardPage() {
   const { totalIncome, totalExpense, totalBalance } =
@@ -18,20 +18,19 @@ export function DashboardPage() {
     <div className={styles.container}>
       <Card
         label="Total Income"
-        value={String(totalIncome)}
+        value={String(formatMoney(totalIncome))}
         icon={<FaArrowCircleDown />}
       />
       <Card
         label="Total Expenses"
-        value={String(totalExpense)}
+        value={String(formatMoney(totalExpense))}
         icon={<FaArrowCircleUp />}
       />
       <Card
         label="Total Balance"
-        value={String(totalBalance)}
+        value={String(formatMoney(totalBalance))}
         icon={<FaWallet />}
       />
-      <Card label={'TEst2'} value={'228228'} icon={<FaAirbnb />} />
     </div>
   )
 }

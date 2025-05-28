@@ -5,10 +5,9 @@
 }
 
 .icon {
-  & * {
-    font-size: 50px;
-  }
+  font-size: 50px;
   margin-bottom: var(--spacing-xl);
+  color: var(--color-success);
 }
 
 .label {

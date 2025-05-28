@@ -1,0 +1,10 @@
+.container {
+  padding: var(--spacing-lg) 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+.header {
+  padding: 0 var(--spacing-lg);
+}

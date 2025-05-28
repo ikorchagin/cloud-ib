@@ -1,4 +1,4 @@
-import { Modal } from '@/ui/components/Modal/Modal.tsx'
+import { Modal } from '@/ui/modal/components/Modal.tsx'
 import { Button } from '@/ui/components/Button'
 
 import type { ConfirmationDialogProps } from './types'

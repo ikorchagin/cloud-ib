@@ -1,15 +1,9 @@
 import React from 'react'
 
 import { TableContext } from './TableContext'
-import type {
-  BaseData,
-  TableProps,
-  TableProviderProps,
-} from '../../types'
+import type { TableProps, TableProviderProps } from '../../types'
 
-export function TableProvider<T extends BaseData>(
-  props: TableProviderProps<T>,
-) {
+export function TableProvider<T>(props: TableProviderProps<T>) {
   const { children, ...initialProps } = props
 
   const [table, setTable] =
