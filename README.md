@@ -15,6 +15,21 @@ Includes modern tooling, type-safe linting, custom UI components, and theming su
 
 ---
 
+## 🕒 Not Implemented Due to Time Constraints
+
+- Improving table component performance
+- Adding loading indicators throughout the app
+- Test coverage (unit tests for the table component as a priority)
+- More thorough component decomposition
+- Implementation of TabSwitch with animation
+- Backend with JWT authentication and integration with RTK Query
+- Button component polishing
+- Refactoring and enforcing a consistent style using eslint (e.g., import order)
+- Setting up Turborepo and moving UI into a separate package
+- Custom select component with dropdown
+
+---
+
 ## 🚀 Getting Started
 
 ### 📦 Prerequisites
