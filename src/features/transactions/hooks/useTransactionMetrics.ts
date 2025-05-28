@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useGetTransactionsQuery } from '@/features/transactions/hooks'
 
-import { TransactionType } from '../constants'
+import { TransactionType } from '../constants.tsx'
 
 export function useTransactionMetrics() {
   const { data, isLoading } = useGetTransactionsQuery(undefined, {})

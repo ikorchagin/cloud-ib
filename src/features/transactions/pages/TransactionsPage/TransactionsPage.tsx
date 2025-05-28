@@ -1,24 +1,30 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
 import { MdAdd, MdClose } from 'react-icons/md'
+import { useForm } from 'react-hook-form'
 
 import { useModal } from '@/ui/modal/hooks'
 import { Table } from '@/ui/table'
 import { Modal } from '@/ui/modal/components'
 import { Button } from '@/ui/components/Button'
-import type { TableColumn } from '@/ui/table/types'
 import { ConfirmationDialog } from '@/ui/components/ConfirmationDialog'
 import { IconButton } from '@/ui/components/IconButton'
 import { Paper } from '@/ui/components/Paper'
-import type { Transaction } from '@/features/transactions/types'
+import { Select } from '@/ui/components/Select'
+import { TRANSACTIONS_TABLE_COLUMNS } from '@/features/transactions/constants.tsx'
+import type {
+  Transaction,
+  TransactionFilter,
+} from '@/features/transactions/types'
 import {
+  useAddTransactionMutation,
   useDeleteTransactionMutation,
   useGetTransactionsQuery,
+  useTransactionCategories,
 } from '@/features/transactions/hooks'
 
 import styles from './TransactionsPage.module.css'
-import { TransactionForm } from '@/features/transactions/components/TransactionForm'
-import { formatMoney } from '@/ui/utils.ts'
+import { TransactionFormFields } from '../../components/TransactionFormFields'
 
 export function TransactionsPage() {
   const navigate = useNavigate()
@@ -38,6 +44,28 @@ export function TransactionsPage() {
   const [selectedTransaction, setSelectedTransaction] =
     React.useState<Transaction | null>(null)
 
+  const [transactionFilter, setTransactionFilter] =
+    React.useState<TransactionFilter>({})
+
+  const { categories } = useTransactionCategories()
+
+  const handleFilterChange = React.useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
+      const category = e.target.value
+
+      if (!category || typeof category !== 'string') {
+        return // If no category is selected, reset the filter
+      }
+
+      if (category === 'all') {
+        setTransactionFilter({})
+      } else {
+        setTransactionFilter({ category })
+      }
+    },
+    [],
+  )
+
   const [deleteTransactionMutation] = useDeleteTransactionMutation()
 
   const handleDeleteTransaction = React.useCallback(async () => {
@@ -53,10 +81,23 @@ export function TransactionsPage() {
     selectedTransaction,
   ])
 
-  const { data } = useGetTransactionsQuery(undefined, {})
+  const { data } = useGetTransactionsQuery(transactionFilter)
+  const [addTransactionMutation] = useAddTransactionMutation()
 
   const handleRedirect = (transaction: Transaction) => {
     navigate(`/transactions/${transaction.id}`)
+  }
+
+  const { register, handleSubmit, reset } = useForm<Transaction>()
+
+  const onSubmit = async (data: Transaction) => {
+    await addTransactionMutation(data)
+    closeEditModal()
+  }
+
+  const handleCloseEditModal = () => {
+    closeEditModal()
+    reset() // Reset the form fields when closing the modal)
   }
 
   return (
@@ -65,9 +106,17 @@ export function TransactionsPage() {
         <IconButton onClick={openEditModal}>
           <MdAdd />
         </IconButton>
+        <Select size="small" onChange={handleFilterChange}>
+          <Select.Option value="all">All</Select.Option>
+          {categories.map(category => (
+            <Select.Option key={category} value={category}>
+              {category}
+            </Select.Option>
+          ))}
+        </Select>
       </div>
       <Table
-        columns={COLUMNS}
+        columns={TRANSACTIONS_TABLE_COLUMNS}
         data={data}
         rowActions={[
           {
@@ -91,80 +140,16 @@ export function TransactionsPage() {
         size="medium"
       >
         <Modal.Title>Add Transaction</Modal.Title>
-        <Modal.Content>
-          <TransactionForm onSubmit={console.log} />
-        </Modal.Content>
-        <Modal.Actions>
-          <Button onClick={closeEditModal}>Cancel</Button>
-          <Button
-            onClick={() => {
-              closeEditModal()
-            }}
-          >
-            Save
-          </Button>
-        </Modal.Actions>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Modal.Content>
+            <TransactionFormFields register={register} />
+          </Modal.Content>
+          <Modal.Actions>
+            <Button onClick={handleCloseEditModal}>Cancel</Button>
+            <Button type="submit">Save</Button>
+          </Modal.Actions>
+        </form>
       </Modal>
     </Paper>
   )
 }
-
-const COLUMNS: TableColumn<Transaction>[] = [
-  {
-    title: 'ID',
-    key: 'id',
-    renderEl: value => <>{value}</>,
-  },
-  {
-    title: 'Description',
-    key: 'description',
-    renderEl: value => <>{value}</>,
-  },
-  {
-    title: 'Amount',
-    key: 'amount',
-    renderEl: value => {
-      const numberValue = Number(value)
-
-      return <>{formatMoney(numberValue)}</>
-    },
-  },
-  {
-    title: 'Type',
-    key: 'type',
-    renderEl: value => {
-      if (typeof value !== 'string') {
-        return <>{value}</>
-      }
-
-      return (
-        <span
-          style={{
-            textTransform: 'capitalize',
-            color:
-              value === 'income'
-                ? 'var(--color-success)'
-                : 'var(--color-error)',
-          }}
-        >
-          {value}
-        </span>
-      )
-    },
-  },
-  {
-    title: 'Category',
-    key: 'category',
-    renderEl: value => <>{value}</>,
-  },
-  {
-    title: 'Date',
-    key: 'date',
-    renderEl: value => {
-      if (typeof value !== 'string') {
-        return <>{value}</>
-      }
-      return <>{new Date(value).toLocaleDateString()}</>
-    },
-  },
-]

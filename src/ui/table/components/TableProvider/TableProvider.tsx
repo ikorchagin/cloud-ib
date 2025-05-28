@@ -10,12 +10,10 @@ export function TableProvider<T>(props: TableProviderProps<T>) {
     React.useState<TableProps<T>>(initialProps)
 
   React.useEffect(() => {
-    if (props.data?.length) {
-      setTable(prevTable => ({
-        ...prevTable,
-        data: props.data,
-      }))
-    }
+    setTable(prevTable => ({
+      ...prevTable,
+      data: [...(props.data || [])],
+    }))
   }, [props.data?.length, props.data])
 
   return (

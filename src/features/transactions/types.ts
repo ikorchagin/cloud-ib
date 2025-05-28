@@ -10,3 +10,7 @@ export interface Transaction {
 
 // Response type for transactions
 export type TransactionsResponse = Transaction[]
+
+export interface TransactionFilter {
+  category?: string
+}

@@ -1,54 +1,100 @@
-# React + TypeScript + Vite
+# 🧪 Cloud IB Test Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A test project built for **Cloud IB** using **React**, **TypeScript**, and **Vite**.  
+Includes modern tooling, type-safe linting, custom UI components, and theming support.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- **Custom Table and Modal Components** (UI logic in place, animations pending)
+- **PostCSS** with `css-vars` for flexible styling
+- **Dark mode support**
+- **Strict typing with ESLint/TS integration**
+- **Modular project structure**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🚀 Getting Started
+
+### 📦 Prerequisites
+
+- **Node.js** v22.14 or higher _(tested and recommended)_
+- **Yarn** package manager
+
+> Don't have Yarn?  
+> [Install Yarn →](https://classic.yarnpkg.com/en/docs/install/)
+
+---
+
+## 🛠️ Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/ikorchagin/cloud-ib.git
+
+# Navigate to the root
+cd cloud-ib
+
+# Install dependencies
+yarn
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🔧 Development
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### 1. Start the **client** (frontend)
+
+```bash
+yarn dev
 ```
+
+### 2. Start the **server** (backend)
+
+```bash
+yarn dev:server
+```
+
+> ⚠️ **Important:** The server must be running concurrently with the client for the app to function correctly.
+
+---
+
+## 🧹 Code Quality & Linting
+
+This project uses a strict ESLint setup based on type-checked rules and React best practices:
+
+- `@typescript-eslint` with `recommendedTypeChecked`
+- `eslint-plugin-react-x`
+- `eslint-plugin-react-dom`
+- Stylistic & accessibility rules included
+
+To lint the project:
+
+```bash
+yarn lint
+```
+
+---
+
+## 🎨 Styling & Theming
+
+- Uses **PostCSS** with `css-vars` for scalable theming
+- Supports **dark mode** out of the box
+- Easily extendable with your own design tokens and components
+
+---
+
+## 📚 Useful Links
+
+- [Vite Documentation](https://vitejs.dev/)
+- [React Documentation](https://reactjs.org/)
+- [TypeScript Docs](https://www.typescriptlang.org/docs/)
+- [ESLint Plugin React X](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-x)
+- [Yarn CLI Reference](https://classic.yarnpkg.com/en/docs/cli/)
+
+---
+
+## 📝 License
+
+MIT © ikorchagin

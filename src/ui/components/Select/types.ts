@@ -1,7 +1,7 @@
 import React from 'react'
 
-export type SelectProps =
-  React.InputHTMLAttributes<HTMLSelectElement> &
-    React.PropsWithChildren & {
-      label?: string
-    }
+export type SelectProps = {
+  label?: string
+  size?: 'small' | 'medium'
+} & Omit<React.InputHTMLAttributes<HTMLSelectElement>, 'size'> &
+  React.PropsWithChildren

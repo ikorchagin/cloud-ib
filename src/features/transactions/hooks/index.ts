@@ -5,6 +5,7 @@ export const {
   useGetTransactionByIdQuery,
   useAddTransactionMutation,
   useDeleteTransactionMutation,
+  useEditTransactionMutation,
 } = transactionsApi
 
 export * from './useTransactionMetrics'

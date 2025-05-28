@@ -7,6 +7,7 @@ export type ButtonVariant = 'primary' | 'error' | 'success'
 export interface ButtonProps extends React.PropsWithChildren {
   variant?: ButtonVariant
   onClick?: React.ButtonHTMLAttributes<HTMLButtonElement>['onClick']
+  type?: React.ButtonHTMLAttributes<HTMLButtonElement>['type']
 }
 
 export const Button: React.FC<ButtonProps> = props => {
@@ -17,7 +18,10 @@ export const Button: React.FC<ButtonProps> = props => {
   } = props
 
   return (
-    <button className={`${styles.button} ${variant}`} onClick={onClick}>
+    <button
+      className={`${styles.button} ${variant}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   )

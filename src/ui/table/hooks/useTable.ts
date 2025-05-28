@@ -13,7 +13,11 @@ export function useTable<T>() {
 
   const setTable = React.useCallback(
     (tableProps: TableProps<T>) => {
-      setTableState({ ...table, ...tableProps })
+      setTableState({
+        ...table,
+        ...tableProps,
+        data: [...(tableProps.data || [])],
+      })
     },
     [setTableState, table],
   )

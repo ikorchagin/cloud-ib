@@ -1,19 +1,15 @@
-import { useForm } from 'react-hook-form'
-
 import { Input } from '@/ui/components/Input'
 import { Select } from '@/ui/components/Select'
 
-import styles from './TransactionForm.module.css'
-import type { TransactionFormProps } from './types'
-import type { Transaction } from '../../types'
+import type { TransactionFormFieldsProps } from './types'
 
-export function TransactionForm(props: TransactionFormProps) {
-  const { onSubmit, disabled = false, ...restProps } = props
-
-  const { handleSubmit, register } = useForm<Transaction>(restProps)
+export function TransactionFormFields(
+  props: TransactionFormFieldsProps,
+) {
+  const { disabled = false, register } = props
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <>
       <Input
         label="Description"
         type="text"
@@ -21,7 +17,6 @@ export function TransactionForm(props: TransactionFormProps) {
         disabled={disabled}
         {...register('description')}
       />
-
       <Input
         label="Amount"
         type="number"
@@ -52,6 +47,6 @@ export function TransactionForm(props: TransactionFormProps) {
         disabled={disabled}
         {...register('date')}
       />
-    </form>
+    </>
   )
 }

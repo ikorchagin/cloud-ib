@@ -17,12 +17,12 @@
       "date": "2024-06-08"
     },
     {
-      "id": "8",
       "description": "Movie Night",
       "amount": -25,
       "type": "expense",
       "category": "Entertainment",
-      "date": "2024-06-12"
+      "date": "2024-06-12",
+      "id": "8"
     },
     {
       "id": "9",
@@ -71,6 +71,22 @@
       "type": "expense",
       "category": "Housing",
       "date": "2024-06-25"
+    },
+    {
+      "id": "c87f",
+      "description": "das",
+      "amount": "1",
+      "type": "income",
+      "category": "TEST",
+      "date": "2025-05-28"
+    },
+    {
+      "id": "a9af",
+      "description": "dasdasdasdasdas",
+      "amount": "321",
+      "type": "expense",
+      "category": "TEST2",
+      "date": "2025-05-28"
     }
   ]
 }

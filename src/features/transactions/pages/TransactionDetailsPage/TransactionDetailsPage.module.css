@@ -17,3 +17,8 @@
   font-weight: bold;
   color: var(--color-text-primary);
 }
+
+.actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
