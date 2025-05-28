@@ -1,31 +1,35 @@
 import React from 'react'
 
 import { TableContext } from './TableContext'
-import type { TableProps, TableProviderProps } from '../../types'
+import type {
+  BaseData,
+  TableProps,
+  TableProviderProps,
+} from '../../types'
 
-export function TableProvider<T>(props: TableProviderProps<T>) {
-  const { children, data, columns } = props
+export function TableProvider<T extends BaseData>(
+  props: TableProviderProps<T>,
+) {
+  const { children, ...initialProps } = props
 
-  const [table, setTable] = React.useState<TableProps<T>>({
-    columns,
-    data,
-  })
+  const [table, setTable] =
+    React.useState<TableProps<T>>(initialProps)
 
   React.useEffect(() => {
-    if (data?.length) {
+    if (props.data?.length) {
       setTable(prevTable => ({
         ...prevTable,
-        data,
+        data: props.data,
       }))
     }
-  }, [data?.length, data])
+  }, [props.data?.length, props.data])
 
   return (
     <TableContext
       value={{
-        // @ts-expect-error Context doesn't need to know about generics
+        // @ts-expect-error generics are not supported in context
         table,
-        // @ts-expect-error Context doesn't need to know about generics
+        // @ts-expect-error generics are not supported in context
         setTable,
       }}
     >

@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   position: sticky;
-  top: 32px;
+  top: var(--spacing-md);
   height: 60px;
 }
 
@@ -10,7 +10,7 @@
   flex-grow: 1;
   display: flex;
   align-items: center;
-  border-radius: var(--spacing-xl);
+  border-radius: var(--spacing-lg);
   justify-content: space-between;
   padding: 16px 32px;
   background-color: rgb(248, 249, 250, 0.6);
@@ -28,9 +28,7 @@
 }
 
 .main {
-  margin: 64px auto 0;
-  max-width: 1000px;
-  min-height: 200vh;
+  margin: 48px auto 0;
 }
 
 .nav {

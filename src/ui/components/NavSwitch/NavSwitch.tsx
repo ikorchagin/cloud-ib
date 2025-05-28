@@ -16,6 +16,7 @@ export function NavSwitch(props: NavSwitchProps) {
 
         return (
           <Link
+            key={to}
             className={`${styles.link} ${isSelected ? styles.selected : ''}`}
             to={to}
           >

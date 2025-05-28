@@ -3,8 +3,11 @@ import ReactDOM from 'react-dom'
 
 import { Paper } from '@/ui/components/Paper'
 
-import type { ModalProps } from './types.ts'
+import { ModalActions } from './ModalActions.tsx'
+import { ModalContent } from './ModalContent.tsx'
+import { ModalTitle } from './ModalTitle.tsx'
 import styles from './Modal.module.css'
+import type { ModalProps } from './types.ts'
 
 const sizesMap = {
   small: styles.sizeSmall,
@@ -50,3 +53,7 @@ export function Modal(props: ModalProps) {
     document.body,
   )
 }
+
+Modal.Title = ModalTitle
+Modal.Content = ModalContent
+Modal.Actions = ModalActions

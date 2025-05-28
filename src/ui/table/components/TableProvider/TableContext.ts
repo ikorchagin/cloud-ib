@@ -8,6 +8,7 @@ export const TableContext = React.createContext<
   table: {
     data: null,
     columns: [],
+    rowActions: [],
   },
   setTable: () => {},
 })

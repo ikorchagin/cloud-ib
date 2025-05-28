@@ -2,10 +2,8 @@ import { useTable } from '@/ui/table/hooks/useTable.ts'
 
 export function TableHeader<T>() {
   const {
-    table: { columns },
+    table: { columns, rowActions },
   } = useTable<T>()
-
-  console.log({ columns })
 
   return (
     <thead>
@@ -13,6 +11,7 @@ export function TableHeader<T>() {
         {columns.map(column => (
           <th key={column.key}>{column.title}</th>
         ))}
+        {rowActions ? <th /> : null}
       </tr>
     </thead>
   )

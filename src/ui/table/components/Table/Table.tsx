@@ -2,19 +2,20 @@ import { Paper } from '@/ui/components/Paper'
 import { TableHeader } from '@/ui/table/components/TableHeader.tsx'
 import { TableProvider } from '../TableProvider'
 import { TableBody } from '@/ui/table/components/TableBody.tsx'
-import { Button } from '@/ui/components/Button'
+import type { BaseData, TableProps } from '@/ui/table/types.ts'
 
 import styles from './Table.module.css'
-import type { TableProps } from '@/ui/table/types.ts'
+import { IconButton } from '@/ui/components/IconButton'
+import { MdAdd } from 'react-icons/md'
 
-export function Table<T>(props: TableProps<T>) {
-  const { columns, data } = props
-
+export function Table<T extends BaseData>(props: TableProps<T>) {
   return (
-    <TableProvider columns={columns} data={data}>
+    <TableProvider {...props}>
       <Paper noPadding className={styles.tableContainer}>
         <div className={styles.tableHeader}>
-          <Button>Test</Button>
+          <IconButton>
+            <MdAdd />
+          </IconButton>
         </div>
         <table className={styles.table}>
           <TableHeader />

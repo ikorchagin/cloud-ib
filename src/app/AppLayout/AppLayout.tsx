@@ -21,7 +21,7 @@ export const AppLayout: React.FC = () => {
                 to: '/',
               },
               {
-                label: 'Transactions',
+                label: 'Transactions list',
                 to: '/transactions',
               },
             ]}

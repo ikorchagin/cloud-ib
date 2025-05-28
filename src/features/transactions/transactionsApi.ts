@@ -1,7 +1,10 @@
 import { api } from '@/app/api.ts'
 
 import { TRANSACTIONS_TAG } from './constants'
-import type { TransactionsResponse } from '@/features/transactions/types.ts'
+import type {
+  Transaction,
+  TransactionsResponse,
+} from '@/features/transactions/types.ts'
 
 export const transactionsApi = api.injectEndpoints({
   endpoints: build => ({
@@ -9,7 +12,7 @@ export const transactionsApi = api.injectEndpoints({
       query: () => '/transactions',
       providesTags: [TRANSACTIONS_TAG],
     }),
-    getTransactionById: build.query({
+    getTransactionById: build.query<Transaction, string>({
       query: id => `/transactions/${id}`,
       providesTags: (_result, _error, id) => [
         { type: TRANSACTIONS_TAG, id },

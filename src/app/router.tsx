@@ -2,7 +2,10 @@ import { createBrowserRouter } from 'react-router'
 
 import { AppLayout } from '@/app/AppLayout'
 import { DashboardPage } from '@/features/dashboard'
-import { TransactionsPage } from '@/features/transactions'
+import {
+  TransactionDetailsPage,
+  TransactionsPage,
+} from '@/features/transactions/pages'
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +20,10 @@ export const router = createBrowserRouter([
       {
         path: '/transactions',
         Component: TransactionsPage,
+      },
+      {
+        path: '/transactions/:id',
+        Component: TransactionDetailsPage,
       },
     ],
   },

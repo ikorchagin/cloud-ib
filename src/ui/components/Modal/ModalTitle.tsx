@@ -1,4 +1,4 @@
-import type { ModalTitleProps } from './types'
+import type { ModalTitleProps } from './types.ts'
 import styles from './Modal.module.css'
 
 export function ModalTitle(props: ModalTitleProps) {

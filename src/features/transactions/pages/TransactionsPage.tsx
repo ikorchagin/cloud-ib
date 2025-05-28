@@ -1,16 +1,21 @@
-import { Table } from '@/ui/table'
 import React from 'react'
-import { Modal } from '@/ui/modal/Modal.tsx'
-import { ModalTitle } from '@/ui/modal/ModalTitle.tsx'
-import { ModalContent } from '@/ui/modal/ModalContent.tsx'
-import { ModalActions } from '@/ui/modal/ModalActions.tsx'
-import { Button } from '@/ui/components/Button'
-import type { TableColumn } from '@/ui/table/types.ts'
-import type { Transaction } from '@/features/transactions/types.ts'
-import { useGetTransactionsQuery } from '@/features/transactions/hooks.ts'
+import { MdClose } from 'react-icons/md'
+
+import { Table } from '@/ui/table'
+import type { TableColumn } from '@/ui/table/types'
+import type { Transaction } from '@/features/transactions/types'
+import {
+  useDeleteTransactionMutation,
+  useGetTransactionsQuery,
+} from '@/features/transactions/hooks'
+import { ConfirmationDialog } from '@/ui/components/ConfirmationDialog'
 
 export function TransactionsPage() {
   const [isOpen, setIsOpen] = React.useState(false)
+  const [selectedTransaction, setSelectedTransaction] =
+    React.useState<Transaction | null>(null)
+
+  const [deleteTransactionMutation] = useDeleteTransactionMutation()
 
   const columns: TableColumn<Transaction>[] = React.useMemo(
     () => [
@@ -49,7 +54,13 @@ export function TransactionsPage() {
 
           return (
             <span
-              style={{ color: value === 'income' ? 'green' : 'red' }}
+              style={{
+                textTransform: 'capitalize',
+                color:
+                  value === 'income'
+                    ? 'var(--color-success)'
+                    : 'var(--color-error)',
+              }}
             >
               {value}
             </span>
@@ -75,32 +86,37 @@ export function TransactionsPage() {
     [],
   )
 
+  const handleDeleteTransaction = React.useCallback(async () => {
+    if (!selectedTransaction) return
+
+    await deleteTransactionMutation(selectedTransaction.id)
+
+    setIsOpen(false)
+    setSelectedTransaction(null)
+  }, [deleteTransactionMutation, selectedTransaction])
+
   const { data } = useGetTransactionsQuery(undefined, {})
 
   return (
-    <div>
-      <button onClick={() => setIsOpen(true)}>modal</button>
-      <Table columns={columns} data={data} />
-      <Modal
+    <>
+      <Table
+        columns={columns}
+        data={data}
+        rowActions={[
+          {
+            icon: <MdClose />,
+            onAction(row) {
+              setSelectedTransaction(row)
+              setIsOpen(true)
+            },
+          },
+        ]}
+      />
+      <ConfirmationDialog
+        onConfirm={handleDeleteTransaction}
         isOpen={isOpen}
-        size="small"
         onClose={() => setIsOpen(false)}
-      >
-        <ModalTitle>Test Modal</ModalTitle>
-        <ModalContent>
-          <h2>Modal Content</h2>
-          <p>This is the content of the modal.</p>
-          <p>
-            You can add more components or elements here as needed.
-          </p>
-        </ModalContent>
-        <ModalActions>
-          <Button onClick={() => setIsOpen(false)}>Close</Button>
-          <Button onClick={() => alert('Action performed!')}>
-            Perform Action
-          </Button>
-        </ModalActions>
-      </Modal>
-    </div>
+      />
+    </>
   )
 }
